@@ -1,0 +1,5 @@
+trivy.tgz: OK
+kind: OK
+Tools installed:
+Version: 0.69.3
+kind v0.33.0 go1.26.7 linux/amd64
