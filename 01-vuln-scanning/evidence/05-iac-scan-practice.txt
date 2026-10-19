@@ -1,0 +1,179 @@
+2026-10-19T11:21:42Z	INFO	[misconfig] Misconfiguration scanning is enabled
+2026-10-19T11:21:42Z	INFO	[checks-client] Need to update the checks bundle
+2026-10-19T11:21:42Z	INFO	[checks-client] Downloading the checks bundle...
+207.25 KiB / 234.57 KiB [-------------------------------------------------------------------------------------->___________] 88.35% ? p/s ?234.57 KiB / 234.57 KiB [--------------------------------------------------------------------------------------] 100.00% 2.45 MiB p/s 300ms2026-10-19T11:21:44Z	WARN	[rego] Module will be skipped as current version of Trivy is older than minimum trivy version required - please update Trivy to use this module	file_path="home/vscode/.cache/trivy/policy/content/policies/cloud/policies/aws/cloudfront/enable_logging.rego" minimum_trivy_version="0.72.0"
+2026-10-19T11:21:44Z	INFO	[terraform scanner] Scanning root module	file_path="."
+2026-10-19T11:21:44Z	INFO	Detected config files	num=2
+
+Report Summary
+
+┌────────────────────┬───────────┬───────────────────┐
+│       Target       │   Type    │ Misconfigurations │
+├────────────────────┼───────────┼───────────────────┤
+│ .                  │ terraform │         0         │
+├────────────────────┼───────────┼───────────────────┤
+│ practice-target.tf │ terraform │         9         │
+└────────────────────┴───────────┴───────────────────┘
+Legend:
+- '-': Not scanned
+- '0': Clean (no security findings detected)
+
+
+practice-target.tf (terraform)
+==============================
+Tests: 9 (SUCCESSES: 0, FAILURES: 9)
+Failures: 9 (UNKNOWN: 0, LOW: 2, MEDIUM: 1, HIGH: 6, CRITICAL: 0)
+
+AWS-0086 (HIGH): No public access block so not blocking public acls
+═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+S3 buckets should block public ACLs on buckets and any objects they contain. By blocking, PUTs with fail if the object has any public ACL a.
+
+
+See https://avd.aquasec.com/misconfig/aws-0086
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ practice-target.tf:18-20
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  18 ┌ resource "aws_s3_bucket" "practice_bucket" {
+  19 │   bucket = "practice-target-never-applied"
+  20 └ }
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+AWS-0087 (HIGH): No public access block so not blocking public policies
+═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+S3 bucket policy should have block public policy to prevent users from putting a policy that enable public access.
+
+
+See https://avd.aquasec.com/misconfig/aws-0087
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ practice-target.tf:18-20
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  18 ┌ resource "aws_s3_bucket" "practice_bucket" {
+  19 │   bucket = "practice-target-never-applied"
+  20 └ }
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+AWS-0089 (LOW): Bucket has logging disabled
+═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+Ensures S3 bucket logging is enabled for S3 buckets
+
+See https://avd.aquasec.com/misconfig/aws-0089
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ practice-target.tf:18-20
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  18 ┌ resource "aws_s3_bucket" "practice_bucket" {
+  19 │   bucket = "practice-target-never-applied"
+  20 └ }
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+AWS-0090 (MEDIUM): Bucket does not have versioning enabled
+═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+Versioning in Amazon S3 is a means of keeping multiple variants of an object in the same bucket.
+
+You can use the S3 Versioning feature to preserve, retrieve, and restore every version of every object stored in your buckets.
+
+With versioning you can recover more easily from both unintended user actions and application failures.
+
+When you enable versioning, also keep in mind the potential costs of storing noncurrent versions of objects. To help manage those costs, consider setting up an S3 Lifecycle configuration.
+
+
+See https://avd.aquasec.com/misconfig/aws-0090
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ practice-target.tf:18-20
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  18 ┌ resource "aws_s3_bucket" "practice_bucket" {
+  19 │   bucket = "practice-target-never-applied"
+  20 └ }
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+AWS-0091 (HIGH): No public access block so not blocking public acls
+═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+S3 buckets should ignore public ACLs on buckets and any objects they contain. By ignoring rather than blocking, PUT calls with public ACLs will still be applied but the ACL will be ignored.
+
+
+See https://avd.aquasec.com/misconfig/aws-0091
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ practice-target.tf:18-20
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  18 ┌ resource "aws_s3_bucket" "practice_bucket" {
+  19 │   bucket = "practice-target-never-applied"
+  20 └ }
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+AWS-0093 (HIGH): No public access block so not restricting public buckets
+═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+S3 buckets should restrict public policies for the bucket. By enabling, the restrict_public_buckets, only the bucket owner and AWS Services can access if it has a public policy.
+
+
+See https://avd.aquasec.com/misconfig/aws-0093
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ practice-target.tf:18-20
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  18 ┌ resource "aws_s3_bucket" "practice_bucket" {
+  19 │   bucket = "practice-target-never-applied"
+  20 └ }
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+AWS-0094 (LOW): Bucket does not have a corresponding public access block.
+═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+The "block public access" settings in S3 override individual policies that apply to a given bucket, meaning that all public access can be controlled in one central types for that bucket. It is therefore good practice to define these settings for each bucket in order to clearly define the public access that can be allowed for it.
+
+
+See https://avd.aquasec.com/misconfig/aws-0094
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ practice-target.tf:18-20
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  18 ┌ resource "aws_s3_bucket" "practice_bucket" {
+  19 │   bucket = "practice-target-never-applied"
+  20 └ }
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+AWS-0107 (HIGH): Security group rule allows unrestricted ingress from any IP address.
+═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+Security groups provide stateful filtering of ingress and egress network traffic to AWS
+resources. It is recommended that no security group allows unrestricted ingress access to
+remote server administration ports, such as SSH to port 22 and RDP to port 3389.
+
+
+See https://avd.aquasec.com/misconfig/aws-0107
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ practice-target.tf:14
+   via practice-target.tf:9-15 (ingress)
+    via practice-target.tf:5-16 (aws_security_group.practice_ssh)
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+   5   resource "aws_security_group" "practice_ssh" {
+   .   
+  14 [     cidr_blocks = ["0.0.0.0/0"]
+  ..   
+  16   }
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+AWS-0132 (HIGH): Bucket does not encrypt data with a customer managed key.
+═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+Encryption using AWS keys provides protection for your S3 buckets. To gain greater control over encryption, such as key rotation, access policies, and auditability, use customer managed keys (CMKs) with SSE-KMS.
+Note that SSE-KMS is not supported for S3 server access logging destination buckets; in such cases, use SSE-S3 instead.
+
+
+See https://avd.aquasec.com/misconfig/aws-0132
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ practice-target.tf:18-20
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  18 ┌ resource "aws_s3_bucket" "practice_bucket" {
+  19 │   bucket = "practice-target-never-applied"
+  20 └ }
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+
+📣 [34mNotices:[0m
+  - Version 0.76.0 of Trivy is now available, current version is 0.69.3
+
+To suppress version checks, run Trivy scans with the --skip-version-check flag
+
