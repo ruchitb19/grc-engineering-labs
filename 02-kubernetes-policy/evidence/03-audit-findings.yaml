@@ -1,0 +1,70 @@
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sNoPrivileged
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"constraints.gatekeeper.sh/v1beta1","kind":"K8sNoPrivileged","metadata":{"annotations":{},"name":"no-privileged-containers"},"spec":{"match":{"excludedNamespaces":["kube-system","gatekeeper-system"],"kinds":[{"apiGroups":[""],"kinds":["Pod"]}]}}}
+  creationTimestamp: "2026-10-21T18:53:03Z"
+  generation: 1
+  name: no-privileged-containers
+  resourceVersion: "1879"
+  uid: 988157ff-0328-4c75-94d9-fe05820e863f
+spec:
+  enforcementAction: deny
+  match:
+    excludedNamespaces:
+    - kube-system
+    - gatekeeper-system
+    kinds:
+    - apiGroups:
+      - ""
+      kinds:
+      - Pod
+status:
+  auditTimestamp: "2026-10-21T18:56:15Z"
+  byPod:
+  - constraintUID: 988157ff-0328-4c75-94d9-fe05820e863f
+    enforced: true
+    enforcementPointsStatus:
+    - enforcementPoint: vap.k8s.io
+      message: K8sNativeValidation engine is missing
+      observedGeneration: 1
+      state: error
+    id: gatekeeper-audit-768844896d-xcq56
+    observedGeneration: 1
+    operations:
+    - audit
+    - generate
+    - mutation-status
+    - status
+  - constraintUID: 988157ff-0328-4c75-94d9-fe05820e863f
+    enforced: true
+    id: gatekeeper-controller-manager-7cdcd668f9-7zrpn
+    observedGeneration: 1
+    operations:
+    - mutation-webhook
+    - webhook
+  - constraintUID: 988157ff-0328-4c75-94d9-fe05820e863f
+    enforced: true
+    id: gatekeeper-controller-manager-7cdcd668f9-qhk7s
+    observedGeneration: 1
+    operations:
+    - mutation-webhook
+    - webhook
+  - constraintUID: 988157ff-0328-4c75-94d9-fe05820e863f
+    enforced: true
+    id: gatekeeper-controller-manager-7cdcd668f9-qscnb
+    observedGeneration: 1
+    operations:
+    - mutation-webhook
+    - webhook
+  totalViolations: 1
+  violations:
+  - enforcementAction: deny
+    group: ""
+    kind: Pod
+    message: Container <web> is privileged. Blocked under NIST 800-53 AC-6 (least
+      privilege).
+    name: sneaky-pod
+    namespace: default
+    version: v1
