@@ -1,4 +1,2 @@
-FROM node:22-alpine
-RUN apk upgrade --no-cache
-USER node
+FROM node:14
 CMD ["node", "-e", "console.log('hello from a scanned image')"]
