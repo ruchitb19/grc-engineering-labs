@@ -30,7 +30,7 @@ My working environment is defined as code, rebuilt the same way every time, and 
 | Lab | What it proves | NIST 800-53 |
 |---|---|---|
 | [01 Vulnerability scanning](01-vuln-scanning/) | Image and IaC scanning, SBOMs, and a CI gate that blocks critical CVEs | RA-5, SI-2, SA-11, CM-8, SR-3 |
-| 02 Kubernetes policy | Planned | |
+| [02 Kubernetes policy](02-kubernetes-policy/) | Admission control and continuous audit with OPA Gatekeeper | AC-6, CM-2, CA-7 |
 | 03 IAM least privilege | Planned | |
 | 04 AWS detection | Planned | |
 
