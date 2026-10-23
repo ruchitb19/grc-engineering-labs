@@ -1,0 +1,2 @@
+
+aws: [ERROR]: An error occurred (IllegalLocationConstraintException) when calling the CreateBucket operation: The unspecified location constraint is incompatible for the region specific endpoint this request was sent to.
