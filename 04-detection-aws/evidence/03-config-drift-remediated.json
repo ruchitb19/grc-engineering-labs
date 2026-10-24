@@ -1,0 +1,17 @@
+[
+    {
+        "Bucket": "csl-detection-logs-111122223333",
+        "Status": "COMPLIANT",
+        "Checked": "2026-10-24T09:48:06.015000+00:00"
+    },
+    {
+        "Bucket": "csl-drift-test-111122223333",
+        "Status": "COMPLIANT",
+        "Checked": "2026-10-24T09:48:54.849000+00:00"
+    },
+    {
+        "Bucket": "ruchit-cloud-resume-challenge",
+        "Status": "NON_COMPLIANT",
+        "Checked": "2026-10-24T09:48:04.645000+00:00"
+    }
+]
