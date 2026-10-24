@@ -10,8 +10,8 @@ terraform {
 }
 
 provider "aws" {
-  region  = "us-east-1"
-  profile = "labs"
+  region  = "ap-south-1"
+  profile = "ruchit"
 
   default_tags {
     tags = {
