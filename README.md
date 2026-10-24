@@ -32,7 +32,7 @@ My working environment is defined as code, rebuilt the same way every time, and 
 | [01 Vulnerability scanning](01-vuln-scanning/) | Image and IaC scanning, SBOMs, and a CI gate that blocks critical CVEs | RA-5, SI-2, SA-11, CM-8, SR-3 |
 | [02 Kubernetes policy](02-kubernetes-policy/) | Admission control and continuous audit with OPA Gatekeeper | AC-6, CM-2, CA-7 |
 | [03 IAM least privilege](03-iam-least-privilege/) | Scoped, time-boxed role assumption with an external ID and policy validation | AC-2, AC-6, IA-2, CM-4 |
-| 04 AWS detection | Planned | |
+| [04 AWS detection](04-detection-aws/) | CloudTrail alarms, Config drift detection and GuardDuty | AU-2, AU-6, AU-9, CA-7, CM-6, SI-4, SI-4(5) |
 
 ## Reproduce
 Open this repo on GitHub, click Code, then Codespaces, then Create codespace on main. When it finishes building, run:
