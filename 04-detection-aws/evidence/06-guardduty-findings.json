@@ -1,0 +1,22 @@
+[
+    {
+        "Type": "Policy:IAMUser/RootCredentialUsage",
+        "Severity": 2.0,
+        "Title": "The API GeneratedFindingAPIName was invoked using root credentials."
+    },
+    {
+        "Type": "Recon:EC2/PortProbeUnprotectedPort",
+        "Severity": 2.0,
+        "Title": "An unprotected port on EC2 instance i-99999999 is being probed."
+    },
+    {
+        "Type": "CryptoCurrency:EC2/BitcoinTool.B!DNS",
+        "Severity": 8.0,
+        "Title": "The EC2 instance i-99999999 queried a Bitcoin-related domain name."
+    },
+    {
+        "Type": "UnauthorizedAccess:IAMUser/MaliciousIPCaller.Custom",
+        "Severity": 5.0,
+        "Title": "The API GeneratedFindingAPIName was invoked from an IP address on a custom threat list."
+    }
+]
